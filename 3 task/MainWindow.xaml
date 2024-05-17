@@ -1,0 +1,49 @@
+﻿<Window x:Class="ZooApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление зоопарком" Height="600" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить животное" Click="AddAnimal_Click" Width="150" Margin="5"/>
+                <Button Content="Удалить животное" Click="RemoveAnimal_Click" Width="150" Margin="5"/>
+                <Button Content="Изменить животное" Click="EditAnimal_Click" Width="150" Margin="5"/>
+                <ComboBox Name="SortComboBox" SelectionChanged="SortComboBox_SelectionChanged" Width="150" Margin="5">
+                    <ComboBoxItem Content="Имя по возрастанию"/>
+                    <ComboBoxItem Content="Имя по убыванию"/>
+                </ComboBox>
+            </StackPanel>
+            <ListView Name="AnimalListView" Margin="5">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding AnimalType}"/>
+                        <GridViewColumn Header="Описание" DisplayMemberBinding="{Binding Description}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Name="AnimalFormPanel" Visibility="Collapsed" Margin="10">
+                <ComboBox Name="AnimalTypeComboBox" SelectionChanged="AnimalTypeComboBox_SelectionChanged" Margin="5">
+                    <ComboBoxItem Content="Рыба"/>
+                    <ComboBoxItem Content="Птица"/>
+                    <ComboBoxItem Content="Зверь"/>
+                </ComboBox>
+                <TextBox Name="NameTextBox" Text="Имя" Foreground="Gray" Margin="5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                <CheckBox Name="IsPredatorCheckBox" Content="Хищник" Margin="5"/>
+                <StackPanel Name="FishPanel" Visibility="Collapsed" Margin="5">
+                    <CheckBox Name="IsDeepWaterCheckBox" Content="Глубоководная"/>
+                </StackPanel>
+                <StackPanel Name="BirdPanel" Visibility="Collapsed" Margin="5">
+                    <TextBox Name="FlightSpeedTextBox" Text="Скорость полета" Foreground="Gray" Margin="5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                </StackPanel>
+                <StackPanel Name="MammalPanel" Visibility="Collapsed" Margin="5">
+                    <TextBox Name="HabitatTextBox" Text="Среда обитания" Foreground="Gray" Margin="5" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="ОК" Click="OKButton_Click" Width="75" Margin="5"/>
+                    <Button Content="Отмена" Click="CancelButton_Click" Width="75" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
